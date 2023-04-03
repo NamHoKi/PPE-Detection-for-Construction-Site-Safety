@@ -1,0 +1,21 @@
+# 데이터 얌파일을 만들어 준다.
+# coco데이터파일을 참고하면 된다.
+
+#path: ./datasets/ # path를 사용해서 앞의 경로를 지쟁해 줄 수 있다.
+## 그럼 이렇게 구성이 되어야 한다.
+#trian: /train/images
+#val: /valid/images
+
+train: .\\dataset\\train\\images # 경로를 지정해준다.
+val: .\\dataset\\valid\\images
+test: .\\dataset\\test\\images
+
+# classes
+names :
+  0 : safety_belt_used
+  1 : safety_belt_unused
+  2 : safety_shoes_used
+  3 : safety_shoes_unused
+  4 : safety_helmet_used
+  5 : safety_helmet_unused
+  6 : person
