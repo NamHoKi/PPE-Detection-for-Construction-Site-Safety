@@ -15,7 +15,8 @@ https://www.hankyung.com/society/article/202302032530Y
 
 
 <hr>
--*- encoding - python 3.8 -*-
+-*- encoding - python 3.8 -*
+I contributed gui.py
 
 <hr>
 
