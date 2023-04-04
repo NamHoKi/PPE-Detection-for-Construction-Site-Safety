@@ -1,17 +1,34 @@
 # object detection toy project
 1. 공사 현장 안전 장비 미착용으로 인한 사고 방지 (스마트 안전 통합 관제 시스템)
 2. 배운 내용으로 데이터 셋 구축 및 서비스 구현
-3. Tracking 기존 코드에 추가하는중
 
-https://github.com/kcw0331/MS-AI-School/tree/main/Computer-Vision/Construction-Site-Safety-PPE-Alert-Detection
 
-<참고자료>
+# PPE Detection for Construction Site Safety using YoloV5
 
-http://news.kmib.co.kr/article/view.asp?arcid=0016070557&code=61121111&cp=nv
+## Introduction
 
-https://newsis.com/view/?id=NISX20230127_0002172017
+- There are many safety accidents without wearing safety equipment (safety helmets, seat belts, safety shoes, etc.) at the construction site until 2023, and a pilot company has been selected and implemented since February 2022. 
 
-https://www.hankyung.com/society/article/202302032530Y
+![reference1](https://user-images.githubusercontent.com/48282708/229698705-21ebde2f-5dea-4a0c-b695-0a7ec6b745bf.jpg)
+
+- It was seen that an employee who did not wear safety equipment at the construction site was notified to the construction site manager when he was found not wearing it for a certain period of time on CCTV. 
+- Therefore, we are working on the project with the goal of making the current Object Detection class and practice similar to the actual practice.
+
+- references:
+
+    - [reference_1](http://news.kmib.co.kr/article/view.asp?arcid=0016070557&code=61121111&cp=nv),
+    [reference_2](https://newsis.com/view/?id=NISX20230127_0002172017),
+    [reference_3](https://www.hankyung.com/society/article/202302032530Y)
+
+---
+
+- Number of participants: 5 people
+
+- Technology Stack: Python, ,Pytorch(ObjectDetection), Pyqt5, Yolov5, Yolov7, Deepsort, MMdetection
+
+- My Role: Data Collection and Purification (Labeling and Bounding Box using CVAT), Data Segmentation, Model Training, GUI Implementation using Pyqt5 and Tracking Connection using Deepsort.
+
+---
 
 
 <hr>
@@ -42,7 +59,14 @@ pyqt5 - GUI 구현
 <hr>
 
 ## 1. Dataset
-### Label 1
+### Label
+
+- There are 7 classes to detect from the dataset:
+    
+   ![week1_labels](https://user-images.githubusercontent.com/48282708/229698707-b929e5b0-1e38-4690-ad19-3853901d9c2a.png)
+    
+    - 'Safety_Belt', 'No_Safety_Belt', 'Safety_Shoes', 'No_Safety_shoes', 'Safety_helmet', 'No_Safety_helmet', 'Person'
+
 ```
 label_dict = {
     0: 'belt',
@@ -55,35 +79,27 @@ label_dict = {
 }
 ```
 
-### Label 2
-```
-label_dict = {
-    0: 'belt',
-    1: 'shoes',
-    2: 'helmet',
-    3: 'person'
-}
-```
+
 
 ### Dataset
-[AI 허브(공사 현장 안전장비 인식 이미지)](https://aihub.or.kr/aihubdata/data/view.do?currMenu=116&topMenu=100&aihubDataSe=ty&dataSetSn=163)
-
-[roboflow(Personal Protective Equipment - Combined Model)](https://universe.roboflow.com/roboflow-universe-projects/personal-protective-equipment-combined-model/browse?queryText=class%3A%22NO-Safety+Vest%22&pageSize=50&startingIndex=500&browseQuery=true)
-
-[roboflow(Hard Hat Workers Dataset) - 안전모 미착용](https://public.roboflow.com/object-detection/hard-hat-workers/2)
-
-
-[roboflow(clothes detect) - 안전조끼 미착용](https://universe.roboflow.com/zhang-ya-ying/clothes-detect-fevqm/dataset/5)
-
-[roboflow(site2)](https://app.roboflow.com/changwoo-kim-vvfty/site2/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true)
-
-[roboflow(whole_dataset) - 안전화 미착용](https://universe.roboflow.com/business-qcddc/whole_dataset/dataset/4)
-
-
 ### Person Label
 ```
 Yolov5 - detect.py - pretrained model (yolo5s, default) - label:0
 ```
+
+- [AI 허브(공사 현장 안전장비 인식 이미지)](https://aihub.or.kr/aihubdata/data/view.do?currMenu=116&topMenu=100&aihubDataSe=ty&dataSetSn=163)
+
+- [roboflow(Personal Protective Equipment - Combined Model)](https://universe.roboflow.com/roboflow-universe-projects/personal-protective-equipment-combined-model/browse?queryText=class%3A%22NO-Safety+Vest%22&pageSize=50&startingIndex=500&browseQuery=true)
+
+- [roboflow(Hard Hat Workers Dataset) - 안전모 미착용](https://public.roboflow.com/object-detection/hard-hat-workers/2)
+
+
+- [roboflow(clothes detect) - 안전조끼 미착용](https://universe.roboflow.com/zhang-ya-ying/clothes-detect-fevqm/dataset/5)
+
+- [roboflow(site2)](https://app.roboflow.com/changwoo-kim-vvfty/site2/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true)
+
+- [roboflow(whole_dataset) - 안전화 미착용](https://universe.roboflow.com/business-qcddc/whole_dataset/dataset/4)
+
 
 <hr>
 
@@ -93,55 +109,6 @@ Yolov5 - detect.py - pretrained model (yolo5s, default) - label:0
 ```
 pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 ```
-
-<hr>
-
-## 4. GUI (PyQt5)
-
-```
-pip install pyqt5
-```
-### 동영상 플레이어 참고 https://oceancoding.blogspot.com/2020/07/blog-post_22.html
-
-<hr>
-
-## 5. Reference
-
-https://koreascience.kr/article/JAKO201915555313326.pdf
-https://ysyblog.tistory.com/m/294 (Python email 이미지 첨부)
-
-# PPE Detection for Construction Site Safety using YoloV5
-
-## Introduction
-
-- There are many safety accidents without wearing safety equipment (safety helmets, seat belts, safety shoes, etc.) at the construction site until 2023, and a pilot company has been selected and implemented since February 2022. 
-
-![reference1](https://user-images.githubusercontent.com/48282708/229698705-21ebde2f-5dea-4a0c-b695-0a7ec6b745bf.jpg)
-
-- It was seen that an employee who did not wear safety equipment at the construction site was notified to the construction site manager when he was found not wearing it for a certain period of time on CCTV. 
-- Therefore, we are working on the project with the goal of making the current Object Detection class and practice similar to the actual practice.
-
-- references:
-
-    - [reference_1](http://news.kmib.co.kr/article/view.asp?arcid=0016070557&code=61121111&cp=nv),
-    [reference_2](https://newsis.com/view/?id=NISX20230127_0002172017),
-    [reference_3](https://www.hankyung.com/society/article/202302032530Y)
-
----
-
-- Number of participants: 5 people
-
-- Technology Stack: Python, ,Pytorch(ObjectDetection), Pyqt5, Yolov5, Yolov7, Deepsort, MMdetection
-
-- My Role: Data Collection and Purification (Labeling and Bounding Box using CVAT), Data Segmentation, Model Training, GUI Implementation using Pyqt5 and Tracking Connection using Deepsort.
-
----
-
-- There are 7 classes to detect from the dataset:
-    
-   ![week1_labels](https://user-images.githubusercontent.com/48282708/229698707-b929e5b0-1e38-4690-ad19-3853901d9c2a.png)
-    
-    - 'Safety_Belt', 'No_Safety_Belt', 'Safety_Shoes', 'No_Safety_shoes', 'Safety_helmet', 'No_Safety_helmet', 'Person'
 
 ## Results
 
@@ -174,14 +141,6 @@ GPU : Tesla V100, Memory : 112GB, CPU : Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GH
 
 - When determining the number of bounding boxes, 84,323 bounding boxes for Train and 11,680 bounding boxes for Valid.
 
-- references:
-
-    - [AI 허브(공사 현장 안전장비 인식 이미지) ​](https://aihub.or.kr/aihubdata/data/view.do?currMenu=116&topMenu=100&aihubDataSe=ty&dataSetSn=163)
-    - [roboflow(Personal Protective Equipment - Combined Model)​](https://universe.roboflow.com/roboflow-universe-projects/personal-protective-equipment-combined-model/browse?queryText=class%3A%22NO-Safety+Vest%22&pageSize=50&startingIndex=500&browseQuery=true​)
-    - [roboflow(Hard Hat Workers Dataset) - 안전모 미착용​](https://public.roboflow.com/object-detection/hard-hat-workers/2​)
-    - [roboflow(clothes detect) - 안전조끼 미착용​​](https://universe.roboflow.com/zhang-ya-ying/clothes-detect-fevqm/dataset/5​)
-    - [roboflow(site2)​](https://app.roboflow.com/changwoo-kim-vvfty/site2/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true​​)
-    - [roboflow(whole_dataset) - 안전화 미착용​​](https://universe.roboflow.com/business-qcddc/whole_dataset/dataset/4​​)
 
 ### 1.1. Yolov5 & Yolov7 result Table
 |Model|Hyperparameter|Batch_size|Epochs|optimizer|mAP0.5|mAP0.5-0.95|
@@ -213,7 +172,14 @@ GPU : Tesla V100, Memory : 112GB, CPU : Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GH
 - In mAP 0.5 it has a value of more than 0.8, but in mAP 0.5 to 0.95, when 100 epochs were turned, it was found to converge from 0.55 to 0.6.
 - So even when we turned Yolov7 200 epochs, we could see that it converges below 0.6. I've only watched 1-Stage, so I'm trying to see if I get different results when I watch 2-Stage on MMdetection. We're also figuring out if the data is weird.
 
-### 1.5. Yolov5 of Output(Yolov5x):
+<hr>
+
+## 4. GUI (PyQt5) & 구현기능  
+
+```
+pip install pyqt5
+```
+
 
 - Implementation Features
     - Explore other janggu objects within the person object (check whether a person wears janggu or not)
@@ -231,5 +197,13 @@ GPU : Tesla V100, Memory : 112GB, CPU : Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GH
 
 - Have the operator send an e-mail message to the administrator when safety equipment is not worn for a certain period of time.
 
-
 - When you send an e-mail, capture the person who is not wearing it as shown in the picture above and send it together by e-mail.
+
+### 동영상 플레이어 참고 https://oceancoding.blogspot.com/2020/07/blog-post_22.html
+
+<hr>
+
+## 5. Reference
+
+https://koreascience.kr/article/JAKO201915555313326.pdf
+https://ysyblog.tistory.com/m/294 (Python email 이미지 첨부)
