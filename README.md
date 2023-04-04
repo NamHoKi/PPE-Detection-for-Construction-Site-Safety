@@ -231,9 +231,5 @@ GPU : Tesla V100, Memory : 112GB, CPU : Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GH
 
 - Have the operator send an e-mail message to the administrator when safety equipment is not worn for a certain period of time.
 
-<center><img src="./result/result_email_image.png"  width="600" height="300"/></center>
 
 - When you send an e-mail, capture the person who is not wearing it as shown in the picture above and send it together by e-mail.
-
-<!-- ### 2. Yolov7 -->
-
