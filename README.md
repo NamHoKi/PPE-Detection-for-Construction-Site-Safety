@@ -1,9 +1,7 @@
-# object detection toy project
+# PPE Detection for Construction Site Safety using YoloV5
+## object detection toy project
 1. 공사 현장 안전 장비 미착용으로 인한 사고 방지 (스마트 안전 통합 관제 시스템)
 2. 배운 내용으로 데이터 셋 구축 및 서비스 구현
-
-
-# PPE Detection for Construction Site Safety using YoloV5
 
 ## Introduction
 
@@ -42,18 +40,15 @@ I contributed gui.py
 ### 1. Dataset
 데이터 다운로드 및 데이터 선택
 이미지 검수 및 이미지 제거 또는 CVAT로 수정작업
-### 2. Train
+
+### 2. Train & Inference
 yolov5모델을 선택하여 training
-### 3. Inference
-### 4. GUI
-pyqt5 - GUI 구현
-### 5. Tracking - DeepSort
-사람 객체 인식 후 ID 부여
-사람 객체 인식 후, 장구류 착용 여부 확인
-### 6. Timer
-장구류 미착용 사람 발견 시, 타이머 작동
-### 7. Alarm
-일정시간 미착용 시 이메일 발송 
+
+### 3. GUI & 구현기능
+- GUI - PyQt5 : 메인화면 및 기능 구현
+- Tracking - DeepSort : 사람 객체 인식 후 ID 부여, 사람 객체 인식 -> 장구류 착용 여부 확인
+- Timer : 장구류 미착용 사람 발견 시, 타이머 작동
+- Alarm : 일정시간 미착용 시 이메일 발송 
 
 
 <hr>
@@ -103,7 +98,7 @@ Yolov5 - detect.py - pretrained model (yolo5s, default) - label:0
 
 <hr>
 
-## 2. Train
+## 2. Train & Inference
 ### [Yolo v5](https://github.com/ultralytics/yolov5)
 ### Pytorch version
 ```
@@ -174,7 +169,7 @@ GPU : Tesla V100, Memory : 112GB, CPU : Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GH
 
 <hr>
 
-## 4. GUI (PyQt5) & 구현기능  
+## 3. GUI & 구현기능  
 
 ```
 pip install pyqt5
