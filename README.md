@@ -198,7 +198,7 @@ pip install pyqt5
 
 <hr>
 
-## 5. Reference
+## Reference
 
 https://koreascience.kr/article/JAKO201915555313326.pdf
 https://ysyblog.tistory.com/m/294 (Python email 이미지 첨부)
