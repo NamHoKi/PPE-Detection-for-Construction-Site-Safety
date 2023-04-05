@@ -194,11 +194,10 @@ pip install pyqt5
 
 - When you send an e-mail, capture the person who is not wearing it as shown in the picture above and send it together by e-mail.
 
-### 동영상 플레이어 참고 https://oceancoding.blogspot.com/2020/07/blog-post_22.html
+### [동영상 플레이어 참고](https://oceancoding.blogspot.com/2020/07/blog-post_22.html)
 
 <hr>
 
 ## Reference
-
 https://koreascience.kr/article/JAKO201915555313326.pdf
 https://ysyblog.tistory.com/m/294 (Python email 이미지 첨부)
