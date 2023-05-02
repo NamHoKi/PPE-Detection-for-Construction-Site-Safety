@@ -3,6 +3,8 @@
 1. 공사 현장 안전 장비 미착용으로 인한 사고 방지 (스마트 안전 통합 관제 시스템)
 2. 배운 내용으로 데이터 셋 구축 및 서비스 구현
 
+skill - Yolov5, Deep Sort
+
 ## Introduction
 
 - There are many safety accidents without wearing safety equipment (safety helmets, seat belts, safety shoes, etc.) at the construction site until 2023, and a pilot company has been selected and implemented since February 2022. 
